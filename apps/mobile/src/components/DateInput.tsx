@@ -21,13 +21,13 @@ type DateInputProps = {
   value: string;
 };
 
-export function DateInput({
+export const DateInput = ({
   errorMessage,
   label,
   onBlur,
   onChange,
   value,
-}: DateInputProps) {
+}: DateInputProps) => {
   const { t } = useTranslation();
   const { theme } = useSettings();
   const isDark = theme === 'dark';
@@ -204,7 +204,7 @@ export function DateInput({
       ) : null}
     </View>
   );
-}
+};
 
 const getDatePickerValue = (value: string) => {
   const date = DateTime.fromISO(value);

@@ -13,11 +13,11 @@ import { ThemeSwitcher } from '../components/ThemeSwitcher';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
 
-function MemberSeparator() {
+const MemberSeparator = () => {
   return <View className="h-3" />;
-}
+};
 
-export function WelcomeScreen({ navigation }: Props) {
+export const WelcomeScreen = ({ navigation }: Props) => {
   const { t } = useTranslation();
   const members = useStore($members);
   const { theme } = useSettings();
@@ -100,4 +100,4 @@ export function WelcomeScreen({ navigation }: Props) {
       />
     </View>
   );
-}
+};

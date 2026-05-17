@@ -30,7 +30,7 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function AppNavigator() {
+const AppNavigator = () => {
   const { t } = useTranslation();
   const { theme } = useSettings();
   const navigationTheme = getNavigationTheme(theme);
@@ -51,9 +51,9 @@ function AppNavigator() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
-function App() {
+const App = () => {
   const colorScheme = useColorScheme();
   const didInitialize = useRef(false);
   const { theme } = useSettings();
@@ -96,6 +96,6 @@ function App() {
       )}
     </SafeAreaProvider>
   );
-}
+};
 
 export default App;

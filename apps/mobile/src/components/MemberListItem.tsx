@@ -9,7 +9,7 @@ type MemberListItemProps = {
   onEdit: (memberId: string) => void;
 };
 
-export function MemberListItem({ member, onEdit }: MemberListItemProps) {
+export const MemberListItem = ({ member, onEdit }: MemberListItemProps) => {
   const { t } = useTranslation();
   const { theme } = useSettings();
   const isDark = theme === 'dark';
@@ -81,4 +81,4 @@ export function MemberListItem({ member, onEdit }: MemberListItemProps) {
       </Pressable>
     </View>
   );
-}
+};

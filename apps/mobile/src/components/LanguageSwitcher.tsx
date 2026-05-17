@@ -8,7 +8,7 @@ import {
   useSettings,
 } from '@members/shared';
 
-export function LanguageSwitcher() {
+export const LanguageSwitcher = () => {
   const { t } = useTranslation();
   const { locale, theme } = useSettings();
   const isDark = theme === 'dark';
@@ -44,4 +44,4 @@ export function LanguageSwitcher() {
       ))}
     </View>
   );
-}
+};

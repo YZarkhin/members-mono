@@ -1,20 +1,11 @@
-import { useEffect } from "react";
 import { Outlet } from "react-router";
 import { useTranslation } from "react-i18next";
-
-import { useSettings } from "@members/shared";
 
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 export const RootLayout = () => {
   const { t } = useTranslation();
-  const { theme } = useSettings();
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
-  }, [theme]);
 
   return (
       <div className="min-h-screen bg-background font-sans text-ink dark:bg-backgroundDark dark:text-inkDark">

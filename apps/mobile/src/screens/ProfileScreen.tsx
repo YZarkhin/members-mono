@@ -25,7 +25,7 @@ import { MemberForm } from '../components/MemberForm';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Profile'>;
 
-export function ProfileScreen({ navigation, route }: Props) {
+export const ProfileScreen = ({ navigation, route }: Props) => {
   const memberId = route.params?.memberId;
   const member = getMember(memberId)
   const isEditing = !!memberId
@@ -139,4 +139,4 @@ export function ProfileScreen({ navigation, route }: Props) {
       ) : null}
     </KeyboardAvoidingView>
   );
-}
+};

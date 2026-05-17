@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { cn, useSettings } from '@members/shared';
 
-export function ThemeSwitcher() {
+export const ThemeSwitcher = () => {
   const { t } = useTranslation();
   const { theme, toggleTheme } = useSettings();
   const isDark = theme === 'dark';
@@ -45,4 +45,4 @@ export function ThemeSwitcher() {
       </View>
     </Pressable>
   );
-}
+};
