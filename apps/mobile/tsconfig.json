@@ -1,0 +1,14 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "paths": {
+      "@members/shared": ["shared/src/index.ts"],
+      "@members/shared/*": ["shared/src/*"]
+    },
+    "strict": true,
+    "types": ["jest", "nativewind/types"]
+  },
+  "include": ["**/*.ts", "**/*.tsx", "nativewind-env.d.ts"],
+  "exclude": ["**/node_modules", "**/Pods"]
+}

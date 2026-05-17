@@ -1,0 +1,26 @@
+{
+  "name": "members-mono",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.1.2",
+  "scripts": {
+    "dev:web": "pnpm --filter @members/web dev",
+    "dev:mobile": "pnpm --filter @members/mobile start",
+    "ios": "pnpm --filter @members/mobile ios",
+    "android": "pnpm --filter @members/mobile android",
+    "build": "pnpm -r build",
+    "test:shared": "pnpm --filter @members/shared test",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "@tsconfig/react-native": "^3.0.7",
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "@members/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./i18n": "./src/i18n/index.ts",
+    "./hooks": "./src/hooks/index.ts",
+    "./stores": "./src/stores/index.ts",
+    "./utils": "./src/utils/index.ts",
+    "./validations": "./src/validations/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@nanostores/react": "^1.0.0",
+    "clsx": "^2.1.1",
+    "i18next": "^25.2.1",
+    "luxon": "^3.6.1",
+    "nanostores": "^1.0.1",
+    "react-i18next": "^15.5.2",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^3.25.20"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.6.2",
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.6"
+  }
+}
