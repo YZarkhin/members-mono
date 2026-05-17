@@ -4,14 +4,17 @@ import { FlatList, Pressable, Text, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
 
-import { $members, cn, useSettings } from '@members/shared';
+import { $members, cn, routes, useSettings } from '@members/shared';
 
 import type { RootStackParamList } from '../../App';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { MemberListItem } from '../components/MemberListItem';
 import { ThemeSwitcher } from '../components/ThemeSwitcher';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Welcome'>;
+type Props = NativeStackScreenProps<
+  RootStackParamList,
+  typeof routes.mobile.welcome
+>;
 
 const MemberSeparator = () => {
   return <View className="h-3" />;
@@ -23,7 +26,9 @@ export const WelcomeScreen = ({ navigation }: Props) => {
   const { theme } = useSettings();
   const isDark = theme === 'dark';
   const editMember = (memberId: string) => {
-    navigation.navigate('Profile', { memberId });
+    navigation.navigate(routes.mobile.profile, {
+      [routes.params.memberId]: memberId,
+    });
   };
 
   return (
@@ -63,7 +68,9 @@ export const WelcomeScreen = ({ navigation }: Props) => {
               'bg-fern': !isDark,
               'bg-fernDark': isDark,
             })}
-            onPress={() => navigation.navigate('Profile', undefined)}
+            onPress={() =>
+              navigation.navigate(routes.mobile.profile, undefined)
+            }
           >
             <Text className="text-center font-bold text-white">
               {t('home.cta')}

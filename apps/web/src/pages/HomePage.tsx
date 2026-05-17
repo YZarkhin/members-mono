@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 
-import { $members } from "@members/shared";
+import { $members, routes } from "@members/shared";
 
 export const HomePage = () => {
   const members = useStore($members);
@@ -26,7 +26,7 @@ export const HomePage = () => {
         </div>
         <Link
           className="inline-flex min-h-11 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-accent px-4 py-3 font-bold text-white no-underline dark:bg-accentDark"
-          to="/profile"
+          to={routes.web.profile.to}
         >
           {t("home.cta")}
         </Link>
@@ -46,7 +46,7 @@ export const HomePage = () => {
                 </span>
                 <Link
                   className="inline-flex min-h-11 w-fit cursor-pointer items-center justify-center rounded-lg bg-surface px-4 py-3 font-bold text-ink no-underline dark:bg-surfaceDark dark:text-inkDark"
-                  to={`/profile/${encodeURIComponent(member.id)}`}
+                  to={routes.web.profile.toMember(member.id)}
                 >
                   {t("member.edit")}
                 </Link>

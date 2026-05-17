@@ -1,19 +1,19 @@
 import { useEffect } from "react";
 import { createHashRouter, RouterProvider } from "react-router";
 
-import { useSettings } from "@members/shared";
+import { routes, useSettings } from "@members/shared";
 import { HomePage } from "./pages/HomePage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { RootLayout } from "./layout/RootLayout";
 
 const router = createHashRouter([
   {
-    path: "/",
+    path: routes.web.home,
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "profile", element: <ProfilePage /> },
-      { path: "profile/:memberId", element: <ProfilePage /> },
+      { path: routes.web.profile.path, element: <ProfilePage /> },
+      { path: routes.web.profile.memberPath, element: <ProfilePage /> },
     ],
   },
 ]);

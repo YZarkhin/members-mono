@@ -9,11 +9,13 @@ import {
   type MemberFormValues,
   updateMember,
   getMember,
+  routes,
 } from "@members/shared";
 import { MemberForm } from "../components/MemberForm";
 
 export const ProfilePage = () => {
-  const { memberId } = useParams();
+  const params = useParams();
+  const memberId = params[routes.params.memberId];
   const member = getMember(memberId);
   const isEditing = Boolean(member);
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ export const ProfilePage = () => {
   const showSuccessAndNavigateHome = () => {
     setIsSuccessVisible(true);
     successTimeoutRef.current = setTimeout(() => {
-      navigate("/");
+      navigate(routes.web.home);
     }, 900);
   };
 
@@ -65,7 +67,7 @@ export const ProfilePage = () => {
     }
 
     deleteMember(member.id);
-    navigate("/");
+    navigate(routes.web.home);
   };
 
   return (

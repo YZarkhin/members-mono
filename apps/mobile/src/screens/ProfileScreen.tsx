@@ -18,15 +18,19 @@ import {
   updateMember,
   useSettings,
   getMember,
+  routes,
 } from '@members/shared';
 
 import type { RootStackParamList } from '../../App';
 import { MemberForm } from '../components/MemberForm';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Profile'>;
+type Props = NativeStackScreenProps<
+  RootStackParamList,
+  typeof routes.mobile.profile
+>;
 
 export const ProfileScreen = ({ navigation, route }: Props) => {
-  const memberId = route.params?.memberId;
+  const memberId = route.params?.[routes.params.memberId];
   const member = getMember(memberId)
   const isEditing = !!memberId
   const { t } = useTranslation();

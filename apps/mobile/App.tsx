@@ -16,6 +16,7 @@ import {
   cn,
   initializeI18n,
   initializeStorePersistence,
+  routes,
   useSettings,
 } from '@members/shared';
 
@@ -24,8 +25,10 @@ import { WelcomeScreen } from './src/screens/WelcomeScreen';
 import { getNavigationTheme, getThemeTokens } from './src/theme';
 
 export type RootStackParamList = {
-  Welcome: undefined;
-  Profile: { memberId?: string } | undefined;
+  [routes.mobile.welcome]: undefined;
+  [routes.mobile.profile]:
+    | { [routes.params.memberId]?: string }
+    | undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -39,12 +42,12 @@ const AppNavigator = () => {
     <NavigationContainer theme={navigationTheme}>
       <Stack.Navigator>
         <Stack.Screen
-          name="Welcome"
+          name={routes.mobile.welcome}
           component={WelcomeScreen}
           options={{ title: t('nav.home') }}
         />
         <Stack.Screen
-          name="Profile"
+          name={routes.mobile.profile}
           component={ProfileScreen}
           options={{ title: t('nav.profile') }}
         />
