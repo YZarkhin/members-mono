@@ -1,0 +1,57 @@
+name: Deploy Vite App to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # Change to "master" if your default branch is master
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps: deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-node: 22
+          cache: 'pnpm' # Change to 'pnpm' or 'yarn' if applicable
+
+      - name: Install dependencies
+        run: pnpm i # Runs from the root to install monorepo-level dependencies
+
+      - name: Build Web App
+        # Navigates to the app directory, builds it, and ensures Vite uses the correct base path
+        run: |
+          cd apps/web
+          pnpm build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Point this exactly to the build output folder inside your monorepo app
+          path: './apps/web/dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
