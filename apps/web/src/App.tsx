@@ -19,7 +19,7 @@ export const App = () => {
   }, [theme]);
 
   return (
-    <Router>
+    <Router basename="/members-mono">
       <div className="min-h-screen bg-background font-sans text-ink dark:bg-backgroundDark dark:text-inkDark">
         <div className="mx-auto max-w-[960px] px-4 py-10 max-[720px]:px-2.5 max-[720px]:py-5">
           <header className="mb-6 flex items-start justify-between gap-6 max-[720px]:flex-col">
