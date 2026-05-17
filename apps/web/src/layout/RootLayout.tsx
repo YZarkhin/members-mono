@@ -1,13 +1,11 @@
 import { useEffect } from "react";
-import { Outlet, createHashRouter, RouterProvider } from "react-router";
+import { Outlet } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import { useSettings } from "@members/shared";
 
-import { LanguageSwitcher } from "./components/LanguageSwitcher";
-import { ThemeSwitcher } from "./components/ThemeSwitcher";
-import { HomePage } from "./pages/HomePage";
-import { ProfilePage } from "./pages/ProfilePage";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
+import { ThemeSwitcher } from "../components/ThemeSwitcher";
 
 export const RootLayout = () => {
   const { t } = useTranslation();
@@ -38,20 +36,3 @@ export const RootLayout = () => {
       </div>
   );
 };
-
-
-const router = createHashRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: 'profile', element: <ProfilePage /> },
-      { path: 'profile/:memberId', element: <ProfilePage />}
-    ],
-  },
-]);
-
-export function App() {
-  return <RouterProvider router={router} />;
-}
