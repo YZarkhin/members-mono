@@ -32,13 +32,13 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # You can specify your exact pnpm version here (e.g., 8, 9, or 'latest')
+          version: latest # You can specify your exact pnpm version here (e.g., 8, 9, or 'latest')
 
       # 2. Set up Node and point the cache to pnpm
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'pnpm'
 
       # 3. Install your monorepo dependencies using pnpm
