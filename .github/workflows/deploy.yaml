@@ -31,8 +31,6 @@ jobs:
       # 1. Install pnpm before setting up Node
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: latest # You can specify your exact pnpm version here (e.g., 8, 9, or 'latest')
 
       # 2. Set up Node and point the cache to pnpm
       - name: Set up Node
