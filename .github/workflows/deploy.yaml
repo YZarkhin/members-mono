@@ -28,20 +28,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 1. Install pnpm before setting up Node
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # You can specify your exact pnpm version here (e.g., 8, 9, or 'latest')
+
+      # 2. Set up Node and point the cache to pnpm
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: 'pnpm' # Change to 'pnpm' or 'yarn' if applicable
+          node-version: 20
+          cache: 'pnpm'
 
+      # 3. Install your monorepo dependencies using pnpm
       - name: Install dependencies
-        run: pnpm i # Runs from the root to install monorepo-level dependencies
+        run: pnpm install --frozen-lockfile
 
+      # 4. Build your Vite app using pnpm
       - name: Build Web App
-        # Navigates to the app directory, builds it, and ensures Vite uses the correct base path
         run: |
           cd apps/web
-          pnpm build
+          pnpm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -49,7 +57,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Point this exactly to the build output folder inside your monorepo app
           path: './apps/web/dist'
 
       - name: Deploy to GitHub Pages
